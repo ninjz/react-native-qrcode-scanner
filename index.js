@@ -188,6 +188,7 @@ export default class QRCodeScanner extends Component {
               style={[styles.camera, this.props.cameraStyle]} 
               onBarCodeRead={this._handleBarCodeRead.bind(this)}
               type={this.props.cameraType}
+              torchMode={this.props.flashOn ? Camera.constants.TorchMode.on : Camera.constants.TorchMode.off}
             >
               {this._renderCameraMarker()}
             </Camera>
@@ -195,7 +196,10 @@ export default class QRCodeScanner extends Component {
         )
       }
       return (
-        <Camera type={cameraType} style={[styles.camera, this.props.cameraStyle]} onBarCodeRead={this._handleBarCodeRead.bind(this)}>
+        <Camera 
+          type={cameraType} style={[styles.camera, this.props.cameraStyle]} onBarCodeRead={this._handleBarCodeRead.bind(this)}
+          torchMode={this.props.flashOn ? Camera.constants.TorchMode.on : Camera.constants.TorchMode.off}
+        >
           {this._renderCameraMarker()}
         </Camera>
       )
